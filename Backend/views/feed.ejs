@@ -1,0 +1,22 @@
+<% include ./partials/feedHeader.ejs %>
+    <div>
+       
+        <header>
+            <h1 class="text-3xl">Feeds</h1>
+        </header>
+        <div class="container">
+            <% posts.forEach((e)=>{ %>
+                <div class="box">
+                    <a href="">
+                        <img class="h-full w-full object-cover" src="images/uploads/<%= e.image  %>" alt="image"></a>
+                    <div class="caption">
+                        <%= e.title %>
+                    </div>
+                </div>
+                <%}) %>
+        </div>
+    </div>
+
+
+
+    <% include ./partials/footer.ejs %>

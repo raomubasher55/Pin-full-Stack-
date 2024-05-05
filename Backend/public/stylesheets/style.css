@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.profile{
+    background: #cccbcb;
+    right: 710px; 
+    top: 7rem;
+}
+
+nav{
+    background: #131111;
+}
+
+.profileMain{
+	background: #232322;
+}
+
+.porfilecard{
+	background-color: #353535;;
+}

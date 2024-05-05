@@ -1,0 +1,54 @@
+<% include ./partials/header.ejs %>
+    <div class="profileMain inline-block w-full bg-slate-600  mt-16  ">
+
+        <div class="containerr max-w-screen-md mx-auto p-4  ">
+            <form id="uploadform" hidden action="fileupload" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" id="">
+            </form>
+            <div class="cards  rounded-lg p-4  text-center">
+                <div>
+                    <div class="profile-picture w-44 h-44 rounded-full overflow-hidden m-auto mb-5">
+
+                        <span id="uploadicon"
+                            class="w-10 h-10 absolute    profile z-10     rounded-full flex  items-center justify-center bg-zinc-200">
+                            <i class="text-zinc-800 ri-pencil-fill"></i>
+                        </span>
+                        <img src="/images/uploads/<%=user.profileImage %>" alt="Profile Picture">
+                    </div>
+                </div>
+                <h2 class="name text-gray-300 text-2xl">username</h2>
+                <h3 class="username text-gray-300 text-lg mb-6">@username</h3>
+                <a href="/add" class="inline-block button bg-red-600 text-white px-4 py-2 rounded ">Add Post</a>    
+                <span class=" bg-center"><strong><h1 class="text-white text-3xl mt-12   " >Your post</h1></strong></span>
+                
+            </div>
+        </div>
+        <div class="cards flex gap-10 py-10 px-24">
+            <% user.posts.forEach((e)=>{%>
+                <div class="  bg-white rounded-lg overflow-hidden shadow-md" style="width: 18rem;">
+                    <img src="/images/uploads/<%=e.image  %> " class="w-full h-auto" alt="...">
+                    <div class="p-4 porfilecard text-white">
+                        <h5 class="text-lg font-semibold mb-2">
+                            <%= e.title %>
+                        </h5>
+                        <p class="text-gray-200 mb-4">
+                            <%= e.description %>
+                        </p>
+                        <a href="#" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Go
+                            somewhere</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#uploadicon").addEventListener('click', () => {
+            document.querySelector('#uploadform input').click();
+        })
+
+        document.querySelector('#uploadform input').addEventListener("change", () => {
+            document.querySelector('#uploadform').submit();
+        })
+    </script>
+
+    <% include ./partials/footer.ejs %>
