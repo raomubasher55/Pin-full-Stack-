@@ -55,7 +55,7 @@ export const Profile = () => {
     const fetchDataProfile = async () => {
         setSpinner(true);
         try {
-            const response = await fetch("http://localhost:5000/profile", {
+            const response = await fetch("https://main--pinproject.netlify.app/profile", {
                 method: "GET",
                 credentials: 'include',
             });

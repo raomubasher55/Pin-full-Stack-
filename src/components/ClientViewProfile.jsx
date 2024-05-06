@@ -16,7 +16,7 @@ export const ClientViewProfile = () => {
     const [spinner, setSpinner] = useState(false)
     // console.log(currentUser);
 
-    const host = 'http://localhost:5000/';
+    const host = 'https://main--pinproject.netlify.app/';
     const loginUser = async () => {
         setSpinner(true)
         const response = await fetch(`${host}profile`, {
@@ -46,7 +46,8 @@ export const ClientViewProfile = () => {
     const follow = async () => {
         setSpinner(true);
         try {
-            const response = await fetch(`http://localhost:5000/follow/${userData._id}`, {
+            // const response = await fetch(`http://localhost:5000/follow/${userData._id}`, {
+            const response = await fetch(`https://main--pinproject.netlify.app/${userData._id}`, {
                 method: "POST",
                 credentials: "include",
             });
@@ -65,7 +66,7 @@ export const ClientViewProfile = () => {
     const unfollow = async () => {
         setSpinner(true)
         try {
-            const response = await fetch(`http://localhost:5000/unfollow/${userData._id}`, {
+            const response = await fetch(`https://main--pinproject.netlify.app/unfollow/${userData._id}`, {
                 method: "POST",
                 credentials: "include",
             });

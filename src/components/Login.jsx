@@ -23,7 +23,7 @@ export const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const host = "http://localhost:5000/";
+        const host = "https://main--pinproject.netlify.app/";
         setSpinner(true);
         try {
             const response = await fetch(`${host}login`, {
