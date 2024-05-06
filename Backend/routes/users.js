@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const plm = require('passport-local-mongoose');
 // const DB = mongoose.connect('mongodb://localhost:27017/pin');
 const DB = 'mongodb+srv://raomubasher5555:Rao3937!@cluster0.07tu9yq.mongodb.net/pin?retryWrites=true&w=majority&appName=Cluster0'
+// const mongoURI = process.env.MONGODB_URI;
 console.log(DB);
 mongoose.connect(DB)
 .then(() => {
