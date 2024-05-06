@@ -80,7 +80,7 @@ export const Profile = () => {
         const formData = new FormData();
         formData.append('file', file);
         try {
-            const response = await fetch(`http://localhost:5000/updateprofileimage/${userData.id}`, {
+            const response = await fetch(`https://main--pinproject.netlify.app/updateprofileimage/${userData.id}`, {
                 method: "PUT",
                 credentials: "include",
                 body: formData
