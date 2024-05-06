@@ -21,7 +21,7 @@ app.use('/images/uploads', express.static(path.join(__dirname, 'public/images/up
 
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://main--pinproject.netlify.app',
   credentials: true
 };
 
