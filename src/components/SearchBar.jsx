@@ -37,7 +37,7 @@ export const SearchBar = () => {
     const handleSearch = async () => {
         try {
 
-            const userResponse = await fetch(`https://main--pinproject.netlify.app/find?search=${encodeURIComponent(search)}`, {
+            const userResponse = await fetch(`http://localhost:5000/find?search=${encodeURIComponent(search)}`, {
                 method: "GET",
             });
 

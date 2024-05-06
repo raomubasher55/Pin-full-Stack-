@@ -35,7 +35,7 @@ export const Navbar = () => {
 
     const handleOnlogout = async () => {
         setSpinner(true)
-        const response = await fetch(`https://main--pinproject.netlify.app/logout`, {
+        const response = await fetch(`http://localhost:5000/logout`, {
             method: "POST",
             credentials: "include"
         });
@@ -49,7 +49,7 @@ export const Navbar = () => {
 
     const user = async () => {
         setSpinner(true);
-        const response = await fetch(`https://main--pinproject.netlify.app/profile`, {
+        const response = await fetch(`http://localhost:5000/profile`, {
             method: "GET",
             credentials: "include",
         });

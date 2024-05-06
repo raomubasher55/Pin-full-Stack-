@@ -10,7 +10,7 @@ export const Home = () => {
 
   const fetchAllPost = async () => {
     setSpinner(true);
-    const response = await fetch(`https://main--pinproject.netlify.app/`, {
+    const response = await fetch(`http://localhost:5000/`, {
       method: "GET",
     });
     const result = await response.json();

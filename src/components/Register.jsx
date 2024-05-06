@@ -21,7 +21,7 @@ export const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const host = "https://main--pinproject.netlify.app/";
+        const host = "http://localhost:5000/";
         setSpinner(true)
         const response = await fetch(`${host}signup`, {
             method: "POST",
