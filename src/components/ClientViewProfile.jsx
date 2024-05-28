@@ -46,8 +46,8 @@ export const ClientViewProfile = () => {
     const follow = async () => {
         setSpinner(true);
         try {
-            // const response = await fetch(`http://localhost:5000/follow/${userData._id}`, {
-            const response = await fetch(`http://localhost:5000/${userData._id}`, {
+            const response = await fetch(`http://localhost:5000/follow/${userData._id}`, {
+            // const response = await fetch(`http://localhost:5000/${userData._id}`, {
                 method: "POST",
                 credentials: "include",
             });
