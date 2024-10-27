@@ -9,6 +9,9 @@ export const SearchBarCard = ({ searchResult, search, setComponent , searchFunct
         setComponent(false);
         searchFunction;
     }
+
+    // console.log(searchResult);
+    
     return (
         <>
             <div className="bg-zinc-200 p-4 absolute left-[11%] top-16 rounded-lg w-4/5 text-black max-h-[70vh] overflow-scroll ">
@@ -19,8 +22,10 @@ export const SearchBarCard = ({ searchResult, search, setComponent , searchFunct
                         {searchResult && (searchResult.length > 0 && search.length > 0) ? (
                             searchResult.map((data, index) => (
                                 <div  key={index}  onClick={handleOnClick}>
+                                    {console.log(data)
+                                    }
                                     <Link
-                                        to={`/userprofile/${data._id}`} // Navigate to the user profile with user ID
+                                        to={`userprofile/${data._id}`} // Navigate to the user profile with user ID
                                         state={{ userData: data }} // Pass user data as state
                                        >
                                         <div className="flex flex-col space-y-4 md:p-4 lg:p-4 p-2">

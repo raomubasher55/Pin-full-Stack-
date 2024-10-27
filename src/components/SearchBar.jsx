@@ -4,7 +4,7 @@ import { Spinner } from './Spinner';
 
 export const SearchBar = () => {
     const [search, setSearch] = useState("");
-    const [searchResult, setSearchResult] = useState(null);
+    const [searchResult, setSearchResult] = useState([]);
     const [error, setError] = useState(null);
     const [component, setComponent] = useState(false);
     const [spinner, setSpinner] = useState(false)
@@ -24,6 +24,7 @@ export const SearchBar = () => {
             setComponent(false);
         }
     };
+
     const handleOnChange = (e) => {
         setSearch(e.target.value);
         document.querySelector('#searchBtn').click();
@@ -37,22 +38,23 @@ export const SearchBar = () => {
     const handleSearch = async () => {
         try {
 
-            const userResponse = await fetch(`http://localhost:5000/find?search=${encodeURIComponent(search)}`, {
+            const userResponse = await fetch(`http://localhost:5000/get-all-user`, {
                 method: "GET",
             });
+            const data = await userResponse.json();
 
-            if (userResponse.ok) {
-                const data = await userResponse.json();
+            const filteredUsers = data.users.filter(user =>
+                user.name.toLowerCase().includes(search.toLowerCase())
+            );
+            if (data.success) {
                 setSpinner(true)
-                setSearchResult(data);
+                setSearchResult(filteredUsers);
                 setSpinner(false);
-                
+
                 if (data.length > 0) {
                     setError(null);
                 } else {
-                    setSearchResult(null);
                     setError("No users or posts found");
-                    setSearchResult(false)
                 }
             } else {
                 setError("Failed to fetch search results");
@@ -63,9 +65,10 @@ export const SearchBar = () => {
     };
 
 
+
     return (
         <>
-            {spinner && <Spinner/>}
+            {spinner && <Spinner />}
             <div className='flex flex-row flex-nowrap md:border-solid md:border-2 md:border-gray-800 rounded-lg md:pt-0 pt-1  ' ref={searchRef}>
                 <input
                     type='search'

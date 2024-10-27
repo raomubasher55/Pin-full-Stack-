@@ -7,6 +7,7 @@ const localStrategy = require('passport-local');
 const { body, query, matchedData, validationResult } = require('express-validator');
 const upload = require('./multer');
 const users = require('./users');
+const { useResolvedPath } = require('react-router-dom');
 passport.use(new localStrategy(userModel.authenticate()))
 
 //homepage
@@ -14,7 +15,16 @@ router.get('/' , async (req, res )=>{
   const posts = await postModel.find().populate('user');
   res.send(posts);
 }
-)
+);
+
+router.get('/get-all-user' , async(req ,  res)=>{
+  const users = await userModel.find().populate('posts');;
+  res.status(200).json({
+    success: true,
+    message: "All user get",
+    users
+  })
+})
 
 /* GET profile page. */
 router.get('/profile', isLoggedIn, async (req, res, next) => {
@@ -78,8 +88,6 @@ router.post('/signup',
   }
 });
 
-
-
 // Login 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
@@ -103,7 +111,6 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-
 // Logout route
 router.post('/logout',isLoggedIn ,function(req, res){
   req.logout(function(err) {
@@ -111,8 +118,6 @@ router.post('/logout',isLoggedIn ,function(req, res){
     res.status(200).send({success: true , message: "Logout successfully"})
   });
 });
-
-
 
 // router.post('/createpin', isLoggedIn, upload.single('file'), async (req, res, next) => {
 //   try {
@@ -240,7 +245,6 @@ router.put('/updateprofileimage/:id', isLoggedIn, upload.single('file'), async (
     res.status(500).send("Server Error");
   }
 });
-
 
 //follow
 router.post('/follow/:userId', isLoggedIn, async (req, res, next) => {
